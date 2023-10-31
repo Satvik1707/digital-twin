@@ -9,6 +9,7 @@ import operationalRoutes from "./routes/operational.js";
 import CoreEngineRoutes from "./routes/coreEngine.js";
 import WhatIfRoutes from "./routes/whatIf.js";
 import generalRoutes from "./routes/general.js";
+import request from 'request';
 
 dotenv.config();
 const app = express();
@@ -25,6 +26,15 @@ app.use("/operational", operationalRoutes);
 app.use("/core-engine", CoreEngineRoutes);
 app.use("/what-if", WhatIfRoutes);
 app.use("/general", generalRoutes);
+
+app.get('/home', function(req, res) {
+    request('http://127.0.0.1:5000/flask', function (error, response, body) {
+        console.error('error:', error);
+        console.log('statusCode:', response && response.statusCode); 
+        console.log('body:', body); 
+        res.send(body);
+      });      
+});
 
 const PORT = process.env.PORT || 9000;
 

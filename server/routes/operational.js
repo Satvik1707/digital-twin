@@ -4,23 +4,20 @@ import csv from 'csv-parser';
 
 const router = express.Router();
 
-router.get('/gnb-details', (req, res) => {
+router.get('/topology-dashboard-data', (req, res) => {
     const results = [];
-    fs.createReadStream('./data/gNB-details.csv')
-        .pipe(csv())
-        .on('data', (data) => results.push(data))
-        .on('end', () => {
-            res.json(results);
-        });
-});
+    const results2 = [];
 
-router.get('/ue-details', (req, res) => {
-    const results = [];
     fs.createReadStream('./data/UE-details.csv')
         .pipe(csv())
         .on('data', (data) => results.push(data))
         .on('end', () => {
-            res.json(results);
+            fs.createReadStream('./data/gNB-details.csv')
+                .pipe(csv())
+                .on('data', (data) => results2.push(data))
+                .on('end', () => {
+                    res.json({ devices: results, tower: results2 });
+                });
         });
 });
 

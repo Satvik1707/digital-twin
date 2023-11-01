@@ -1,0 +1,7 @@
+device_type,latitude,longitude,device_name,location,data
+0,17.436871,78.375615,"Tower A","Point A","{}"
+0,17.446347,78.378674,"Tower B","Point B","{}"
+0,17.436871,78.375615,"UE 1","Point C","{}"
+0,17.446347,78.378674,"UE 2","Point D","{}"
+0,17.438109,78.364211,"UE 3","Point E","{}"
+0,17.448423,78.373939,"UE 4","Point F","{}"

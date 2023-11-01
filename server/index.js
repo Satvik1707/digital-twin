@@ -27,15 +27,6 @@ app.use("/core-engine", CoreEngineRoutes);
 app.use("/what-if", WhatIfRoutes);
 app.use("/general", generalRoutes);
 
-app.get('/home', function(req, res) {
-    request('http://127.0.0.1:5000/flask', function (error, response, body) {
-        console.error('error:', error);
-        console.log('statusCode:', response && response.statusCode); 
-        console.log('body:', body); 
-        res.send(body);
-      });      
-});
-
 const PORT = process.env.PORT || 9000;
 
 mongoose.connect(process.env.MONGO_URL, {

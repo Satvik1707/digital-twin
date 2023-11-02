@@ -1,5 +1,5 @@
 import express from 'express';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -9,7 +9,6 @@ import operationalRoutes from "./routes/operational.js";
 import CoreEngineRoutes from "./routes/coreEngine.js";
 import WhatIfRoutes from "./routes/whatIf.js";
 import generalRoutes from "./routes/general.js";
-import request from 'request';
 
 dotenv.config();
 const app = express();
@@ -29,9 +28,5 @@ app.use("/general", generalRoutes);
 
 const PORT = process.env.PORT || 9000;
 
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-    app.listen(PORT, () => console.log(`Server Running on Port: ${PORT} `));
-});
+app.listen(PORT, () => console.log(`Server Running on Port: ${PORT} `));
+
